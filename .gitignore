@@ -1,0 +1,13 @@
+/fastapienv/
+/.idea/FastAPI-The-Complete-Course.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
+
+__pycache__/
+.idea
+env
+venv
+.vscode
+.DS_Store
