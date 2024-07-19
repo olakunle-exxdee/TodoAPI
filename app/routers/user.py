@@ -3,11 +3,11 @@
 from typing import Annotated
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status, HTTPException
-from models import Users
-from database import SessionLocal
+from app.models import Users
+from passlib.context import CryptContext
+from app.database import SessionLocal
 from pydantic import BaseModel, Field
 from .auth import get_current_user
-from passlib.context import CryptContext
 
 
 router = APIRouter(

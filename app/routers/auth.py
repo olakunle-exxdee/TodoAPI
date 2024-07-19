@@ -8,8 +8,8 @@ from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from pydantic import BaseModel
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
-from database import SessionLocal
-from models import Users
+from app.database import SessionLocal
+from app.models import Users
 from jose import jwt, JWTError
 
 

@@ -1,7 +1,7 @@
 """ This file contains the database schema for the todo app. """
 
-from database import Base
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from app.database import Base
 
 
 class Users(Base):

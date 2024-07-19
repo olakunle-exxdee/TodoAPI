@@ -1,9 +1,9 @@
 """ This file is used to create the FastAPI instance and create the database tables. """
 
 from fastapi import FastAPI
-import models
-from database import engine
-from routers import auth, todos, admin, user
+import app.models as models
+from app.database import engine
+from app.routers import auth, todos, admin, user
 
 
 app = FastAPI()
