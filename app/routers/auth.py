@@ -1,11 +1,12 @@
 """This module is used to create the user and return the user details."""
 
+import os
 from datetime import timedelta, datetime, timezone
 from typing import Annotated
 from fastapi import APIRouter, Depends, status, HTTPException
+from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from pydantic import BaseModel
 from passlib.context import CryptContext
-from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from database import SessionLocal
 from models import Users
@@ -17,8 +18,8 @@ router = APIRouter(
     tags=["auth"],
 )
 
-SECRET_KEY = "4ffd91b79994f1741545df8fd6bdb8a860e2c659be1a47203d656cbb299328a4"
-ALGORITHM = "HS256"
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 
 
 bcrypt = CryptContext(schemes=["bcrypt"], deprecated="auto")

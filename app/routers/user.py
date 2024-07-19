@@ -2,7 +2,7 @@
 
 from typing import Annotated
 from sqlalchemy.orm import Session
-from fastapi import APIRouter, Depends, status, HTTPException, Path, Body
+from fastapi import APIRouter, Depends, status, HTTPException
 from models import Users
 from database import SessionLocal
 from pydantic import BaseModel, Field
@@ -28,7 +28,7 @@ def get_db():
 
 
 DbDependency = Annotated[Session, Depends(get_db)]
-user_dependency = Annotated[dict, Depends(get_current_user)]
+UserDependency = Annotated[dict, Depends(get_current_user)]
 
 
 class UserVerification(BaseModel):
@@ -39,7 +39,7 @@ class UserVerification(BaseModel):
 
 
 @router.get("/", status_code=status.HTTP_200_OK)
-async def read_current_user(user: user_dependency, db: DbDependency):
+async def read_current_user(user: UserDependency, db: DbDependency):
     """This function is used to get the current user."""
 
     if user is None:
@@ -52,7 +52,7 @@ async def read_current_user(user: user_dependency, db: DbDependency):
 
 @router.put("/update_password", status_code=status.HTTP_204_NO_CONTENT)
 async def update_password(
-    user: user_dependency, db: DbDependency, user_verification: UserVerification
+    user: UserDependency, db: DbDependency, user_verification: UserVerification
 ):
     """this function is used to update_password"""
     if user is None:

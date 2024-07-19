@@ -3,7 +3,6 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, status, HTTPException, Path
 from models import Todos
 from database import SessionLocal
-from pydantic import BaseModel, Field
 from .auth import get_current_user
 
 
@@ -23,11 +22,11 @@ def get_db():
 
 
 DbDependency = Annotated[Session, Depends(get_db)]
-user_dependency = Annotated[dict, Depends(get_current_user)]
+UserDependency = Annotated[dict, Depends(get_current_user)]
 
 
 @router.get("/todos", status_code=status.HTTP_200_OK)
-def get_all_todos(db: DbDependency, user: user_dependency):
+def get_all_todos(db: DbDependency, user: UserDependency):
     """This function is used to get all the todos."""
     if user is None or user.get("role") != "admin":
         raise HTTPException(
@@ -38,7 +37,7 @@ def get_all_todos(db: DbDependency, user: user_dependency):
 
 @router.delete("/todos/{todo_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_todo(
-    user: user_dependency,
+    user: UserDependency,
     db: DbDependency,
     todo_id: int = Path(..., title="The ID of the todo to delete", gt=0),
 ):
