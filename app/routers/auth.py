@@ -3,6 +3,7 @@
 import os
 from datetime import timedelta, datetime, timezone
 from typing import Annotated
+from jose import jwt, JWTError
 from fastapi import APIRouter, Depends, status, HTTPException
 from fastapi.security import OAuth2PasswordRequestForm, OAuth2PasswordBearer
 from pydantic import BaseModel
@@ -10,7 +11,6 @@ from passlib.context import CryptContext
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
 from app.models import Users
-from jose import jwt, JWTError
 
 
 router = APIRouter(
