@@ -26,6 +26,7 @@ DbDependency = Annotated[Session, Depends(get_db)]
 user_dependency = Annotated[dict, Depends(get_current_user)]
 
 
+# schema for the  todo request body
 class TodoRequest(BaseModel):
     """This class is used to validate the request body for the todo creation."""
 

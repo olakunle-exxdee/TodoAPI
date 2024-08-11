@@ -1,11 +1,25 @@
-# Fastapi
 
-## Fastapi is a modern, fast (high-performance), web framework for building APIs with Python 3.6+ based on standard Python type hints
+# Todo API
 
-## Fastapi is based on Starlette for the web parts and Pydantic for the data parts
+A simple RESTful API for managing todo items, built with FastAPI.
 
-## Fastapi is one of the fastest web frameworks available
+## Features
 
-## Fastapi is a modern Python web framework that leverage the latest Python features to allow you to build web APIs very quickly and efficiently
+- Create, read, update, and delete todo items
+- User Auth
 
-## Fastapi is a web framework that is designed to be easy to use and easy to learn
+## Installation
+
+1. Clone this repository
+
+2. Install dependencies:
+
+## Usage
+
+1. Start the server: uvicorn app.main:app --reload
+2. Open your browser and go to `http://localhost:8000/docs` to see the API documentation and test the endpoints.
+
+
+
+
+
