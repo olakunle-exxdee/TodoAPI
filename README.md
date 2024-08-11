@@ -14,6 +14,9 @@ A simple RESTful API for managing todo items, built with FastAPI.
 
 2. Install dependencies:
 
+-create virtual env
+-pip install -r requirements.txt
+
 ## Usage
 
 1. Start the server: uvicorn app.main:app --reload
